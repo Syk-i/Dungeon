@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212177985627039270}
   - component: {fileID: 114601105058007696}
   - component: {fileID: 58677484267707250}
+  - component: {fileID: 114362356969659126}
   m_Layer: 0
   m_Name: HealthPotionPickup
   m_TagString: Untagged
@@ -57,6 +58,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &114362356969659126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757524140050374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e7430f970e20e4bb8eb2faba58edbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthToGive: 2
 --- !u!114 &114601105058007696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f9c9d60e75f4848868e42a9b247537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemButton: {fileID: 1783550164731878, guid: 0bb54eaa834c5a64bbe38ac6a753c117, type: 2}
+  itemButton: {fileID: 1520903880490968, guid: 0bb54eaa834c5a64bbe38ac6a753c117, type: 2}
 --- !u!212 &212177985627039270
 SpriteRenderer:
   m_ObjectHideFlags: 1

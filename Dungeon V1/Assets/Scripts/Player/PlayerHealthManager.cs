@@ -14,6 +14,9 @@ public class PlayerHealthManager : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public Text health;
+    
+
 
     // Use this for initialization
     void Start()
@@ -25,7 +28,13 @@ public class PlayerHealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerCurrentHealth <=0)
+        if (playerCurrentHealth > PlayerMaxHealth)
+        {
+            playerCurrentHealth = PlayerMaxHealth;
+        }
+        
+
+            if (playerCurrentHealth <=0)
         {
             gameObject.SetActive(false);
             Debug.Log("Working");
@@ -33,6 +42,7 @@ public class PlayerHealthManager : MonoBehaviour
 
             
         }
+        health.text = playerCurrentHealth.ToString();
     }
 
     public void HurtPlayer(int damageToGive)
@@ -40,36 +50,21 @@ public class PlayerHealthManager : MonoBehaviour
         playerCurrentHealth -= damageToGive;
         Debug.Log(damageToGive);
         Debug.Log(playerCurrentHealth);
-        if (playerCurrentHealth > numOfHearts)
-        {
-            playerCurrentHealth = numOfHearts;
-        }
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < playerCurrentHealth)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
-
-        }
+       
+        
 
     }
     public void SetMaxHealth()
     {
         playerCurrentHealth = PlayerMaxHealth;
+    }
+
+    public void AidPlayer(int HealthToGive)
+    {
+        
+            playerCurrentHealth += HealthToGive;
+            
+        
     }
 }
 

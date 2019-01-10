@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour {
     private Inventory inventory;
     public GameObject itemButton;
-
+   
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
