@@ -5,9 +5,15 @@ using UnityEngine;
 public class HealthPotion : MonoBehaviour
 {
     public int HealthToGive;
+    
     public void UseItem()
     {
+        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthManager>().AidPlayer(HealthToGive);
         Debug.Log("Pressed");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthManager>().AidPlayer(HealthToGive);
+        Destroy(gameObject);
+
+
+
     }
 }

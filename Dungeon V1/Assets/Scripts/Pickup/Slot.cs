@@ -27,13 +27,7 @@ public class Slot : MonoBehaviour {
 
         
     }
-    public void UseItem()
-    {
-        foreach(Transform child in transform)
-        {
-           // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthManager>().HealthToGive =5;
-            GameObject.Destroy(child.gameObject);
-        }
-    }
+   
+
 }
   
