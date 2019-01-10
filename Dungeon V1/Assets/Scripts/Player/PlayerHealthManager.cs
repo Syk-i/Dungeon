@@ -8,11 +8,11 @@ public class PlayerHealthManager : MonoBehaviour
     public int PlayerMaxHealth;
     public int playerCurrentHealth;
 
-    public int numOfHearts;
+   // public int numOfHearts;
 
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
+    //public Image[] hearts;
+   // public Sprite fullHeart;
+    //public Sprite emptyHeart;
 
     public Text health;
     
