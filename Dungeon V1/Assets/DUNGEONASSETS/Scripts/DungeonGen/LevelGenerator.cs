@@ -1,0 +1,227 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelGenerator : MonoBehaviour
+{
+
+    [Header("Entities")]
+    public GameObject player;
+    public GameObject enemy;
+    public GameObject chest;
+    public GameObject door;
+    public int chestAmount = 1;
+    public int enemyAmount = 10;
+
+    [Header("UI")]
+    private GameObject UIVanish;
+
+    [Header("Tiles")]
+    public GameObject[] tiles;
+    public GameObject wall;
+
+    public List<Vector3> createdTiles;
+
+    public int tileAmount;
+    public int tileSize; //space between each movement of the generator which will be 16 units
+    public float waitTime;
+
+    [Header("Probability")]
+    public float chanceUp;
+    public float chanceRight;
+    public float chanceDown;
+    //Wall Gen
+
+    public float minY = 9999999;
+    public float maxY = 0;
+
+    public float minX = 9999999;
+    public float maxX = 0;
+
+    public float xAmount;
+    public float yAmount;
+
+    public float extraWallX;
+    public float extraWallY;
+
+    [Header("Grouping")]
+    public  GameObject TileGroup;
+    public GameObject WallGroup;
+    public GameObject EnemyGroup;
+
+
+
+
+
+    void Start()
+    {
+        StartCoroutine(GenerateLevel());
+        //Random.seed = 10;// if you want to generate the same level again
+        UIVanish = gameObject.GetComponent<Canvasui>().uidrop;
+    }
+
+    IEnumerator GenerateLevel() //used for debugging
+    {
+        for (int i = 0; i < tileAmount; i++)
+        {
+            float dir = Random.Range(0f, 1f);
+            int tile = Random.Range(0, tiles.Length);
+
+            CreateTile(tile);
+            CallMoveGen(dir);
+            yield return new WaitForSeconds(waitTime);
+
+
+            if (i == tileAmount - 1)
+            {
+                Finish();
+            }
+        }
+        yield return 0;
+    }
+
+
+
+    void CallMoveGen(float ranDir)
+    {
+        if (ranDir < chanceUp)
+        {
+            MoveGen(0);
+
+        }
+        else if (ranDir < chanceRight)
+        {
+            MoveGen(1);
+        }
+        else if (ranDir < chanceDown)
+        {
+            MoveGen(2);
+        }
+        else
+        {
+            MoveGen(3);
+        }
+    }
+
+    void MoveGen(int dir) //direction generator will mvoe
+    {
+        switch (dir)
+        {
+            case 0:
+                transform.position = new Vector3(transform.position.x, transform.position.y + tileSize, 0);
+
+                break;
+            case 1:
+                transform.position = new Vector3(transform.position.x + tileSize, transform.position.y, 0);
+
+                break;
+            case 2:
+                transform.position = new Vector3(transform.position.x, transform.position.y - tileSize, 0);
+
+
+
+                break;
+            case 3:
+                transform.position = new Vector3(transform.position.x - tileSize, transform.position.y, 0);
+
+                break;
+        }
+    }
+
+
+    public void CreateTile(int tileIndex)
+    {
+        if (!createdTiles.Contains(transform.position))
+        {
+            GameObject tileObject;
+
+            tileObject = Instantiate(tiles[tileIndex], transform.position, transform.rotation) as GameObject;
+            
+
+            createdTiles.Add(tileObject.transform.position);
+            for (int i = 0; i < tileAmount; i++)
+            {
+                tileObject.transform.parent = TileGroup.transform;
+            }
+        }
+        else
+        {
+            tileAmount++;
+        }
+
+
+    }
+
+    void Finish()
+    {
+        CreateWallValues();
+        CreateWalls();
+        SpawnObjects();
+        UIVanish.SetActive(false);
+    }
+    void SpawnObjects()
+    {
+        Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
+        Instantiate(door, createdTiles[1], Quaternion.identity);
+        for (int i = 0; i < enemyAmount; i++)
+        {
+            GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+            Enemies.transform.parent = EnemyGroup.transform;
+        }
+        for (int i = 0; i < chestAmount; i++)
+        {
+            Instantiate(chest, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+
+        }
+    }
+
+    void CreateWallValues()
+    {
+        for (int i = 0; i < createdTiles.Count; i++)
+        {
+            if (createdTiles[i].y < minY)
+            {
+                minY = createdTiles[i].y;
+            }
+            if (createdTiles[i].y > maxY)
+            {
+                maxY = createdTiles[i].y;
+            }
+            if (createdTiles[i].x < minX)
+            {
+                minX = createdTiles[i].x;
+            }
+            if (createdTiles[i].x > maxX)
+            {
+                maxX = createdTiles[i].x;
+            }
+
+
+            xAmount = ((maxX - minX) / tileSize) + extraWallX;
+            yAmount = ((maxY - minY) / tileSize) + extraWallY;
+        }
+
+    }
+
+    void CreateWalls()
+    {
+        for (int x = 0; x < xAmount; x++)
+        {
+            for (int y = 0; y < yAmount; y++)
+            {
+                if (!createdTiles.Contains(new Vector3((minX - (extraWallX * tileSize) / 2) + (x * tileSize), (minY - (extraWallY * tileSize) / 2) + (y * tileSize))))
+                {
+                    
+                   GameObject Wall =  Instantiate(wall, new Vector3((minX - (extraWallX * tileSize) / 2) + (x * tileSize), (minY - (extraWallY * tileSize) / 2) + (y * tileSize)), transform.rotation);
+                    Wall.transform.parent = WallGroup.transform;
+
+                }
+                }
+            }
+        }
+       
+    }
+
+    
+  
+
