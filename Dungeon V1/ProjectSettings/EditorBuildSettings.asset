@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/DUNGEONASSETS/Scenes/Gucci.unity
+    guid: 202c61510df9b3f49bb0964e160cead9

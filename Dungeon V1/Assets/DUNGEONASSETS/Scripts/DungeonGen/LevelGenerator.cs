@@ -11,7 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject chest;
     public GameObject door;
     public int chestAmount = 1;
-    public int enemyAmount = 10;
+    public int enemyAmount =10;
 
     [Header("UI")]
     private GameObject UIVanish;
@@ -44,23 +44,30 @@ public class LevelGenerator : MonoBehaviour
     public float extraWallX;
     public float extraWallY;
 
+    public int EnemyPlus;
+
     [Header("Grouping")]
     public  GameObject TileGroup;
     public GameObject WallGroup;
     public GameObject EnemyGroup;
-
+    public GameObject ChestGroup;
+    public GameObject TrapDoorGroup;
+    int enemies; 
 
 
 
 
     void Start()
     {
+        //Debug.Log(gameObject.GetComponent<BoardMaster>().curvalue);
+        
+
         StartCoroutine(GenerateLevel());
         //Random.seed = 10;// if you want to generate the same level again
         UIVanish = gameObject.GetComponent<Canvasui>().uidrop;
     }
 
-    IEnumerator GenerateLevel() //used for debugging
+   public  IEnumerator GenerateLevel() //used for debugging
     {
         for (int i = 0; i < tileAmount; i++)
         {
@@ -158,20 +165,25 @@ public class LevelGenerator : MonoBehaviour
         CreateWalls();
         SpawnObjects();
         UIVanish.SetActive(false);
+
+        EnemyPlus += 1;
+        gameObject.GetComponent<BoardMaster>().Run();
+        
     }
     void SpawnObjects()
     {
         Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
-        Instantiate(door, createdTiles[1], Quaternion.identity);
-        for (int i = 0; i < enemyAmount; i++)
+        GameObject TrapDoor = Instantiate(door, createdTiles[1], Quaternion.identity);
+        TrapDoor.transform.parent = TrapDoorGroup.transform;
+        for (int i = 0; i <enemies ; i++)
         {
             GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
             Enemies.transform.parent = EnemyGroup.transform;
         }
         for (int i = 0; i < chestAmount; i++)
         {
-            Instantiate(chest, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
-
+           GameObject Chest = Instantiate(chest, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+            Chest.transform.parent = ChestGroup.transform;
         }
     }
 
@@ -219,6 +231,47 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+   public  void DeleteWall()
+    {
+        {
+            for (int x = 0; x < xAmount; x++)
+            {
+                for (int y = 0; y < yAmount; y++)
+                {
+                    
+                        //GameObject Wall = Instantiate(wall, new Vector3((minX - (extraWallX * tileSize) / 2) + (x * tileSize), (minY - (extraWallY * tileSize) / 2) + (y * tileSize)), transform.rotation);
+                        //Wall.transform.parent = WallGroup.transform;
+                    Destroy(WallGroup);
+
+                    
+                }
+            }
+        }
+    }
+
+    public void DeleteTiles()
+    {
+        for (int i = 0; i < tileAmount; i++)
+        {
+            Destroy(TileGroup);
+        }
+    }
+
+    public void DeleteEnemies()
+    {
+        for (int i = 0; i < enemyAmount; i++)
+        {
+            Destroy(EnemyGroup);
+            
+        }
+        
+    }
+    public void DeleteSpawnables()
+    {
+        Destroy(ChestGroup);
+        Destroy(TrapDoorGroup);
+    }
+
        
     }
 
