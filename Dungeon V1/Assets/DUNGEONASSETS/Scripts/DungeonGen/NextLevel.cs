@@ -12,7 +12,7 @@ public class NextLevel : MonoBehaviour
     public GameObject ChestGroup;
     public GameObject TrapDoorGroup;
     public bool generate;
-    
+    public int enemi;
    
    
 
@@ -21,6 +21,8 @@ public class NextLevel : MonoBehaviour
 
     void Start()
     {
+        GameObject master = GameObject.Find("Master");
+        test enemi = master.GetComponent<test>();
         
     }
     // Update is called once per frame
@@ -50,7 +52,8 @@ public class NextLevel : MonoBehaviour
                 GameObject.Destroy(child.gameObject);
             }
 
-           
+            
+            
             SceneManager.GetActiveScene(); SceneManager.LoadScene("Gucci");
             
             

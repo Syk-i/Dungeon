@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    //this code lets me call my gamemanager script from other scripts
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
+
+    //these are my variables that I have i want saved throughout the game
 }

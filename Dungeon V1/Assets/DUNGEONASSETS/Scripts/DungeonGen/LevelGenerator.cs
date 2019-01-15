@@ -52,19 +52,24 @@ public class LevelGenerator : MonoBehaviour
     public GameObject EnemyGroup;
     public GameObject ChestGroup;
     public GameObject TrapDoorGroup;
-    int enemies; 
+    int enemies;
+    int EnemAmount;
 
-
+     
+    
 
 
     void Start()
     {
         //Debug.Log(gameObject.GetComponent<BoardMaster>().curvalue);
-        
 
+          
+        
         StartCoroutine(GenerateLevel());
         //Random.seed = 10;// if you want to generate the same level again
         UIVanish = gameObject.GetComponent<Canvasui>().uidrop;
+        int EnemAmount = gameObject.GetComponent<test>().total;
+
     }
 
    public  IEnumerator GenerateLevel() //used for debugging
@@ -165,17 +170,19 @@ public class LevelGenerator : MonoBehaviour
         CreateWalls();
         SpawnObjects();
         UIVanish.SetActive(false);
-
-        EnemyPlus += 1;
-        gameObject.GetComponent<BoardMaster>().Run();
+        
+        
+        
         
     }
     void SpawnObjects()
     {
+        
         Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
         GameObject TrapDoor = Instantiate(door, createdTiles[1], Quaternion.identity);
         TrapDoor.transform.parent = TrapDoorGroup.transform;
-        for (int i = 0; i <enemies ; i++)
+        
+        for (int i = 0; i < PlayerPrefs.GetInt("saved_total"); i++)
         {
             GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
             Enemies.transform.parent = EnemyGroup.transform;
