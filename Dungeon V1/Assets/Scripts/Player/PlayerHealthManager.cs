@@ -7,6 +7,7 @@ public class PlayerHealthManager : MonoBehaviour
 {
     public int PlayerMaxHealth;
     public int playerCurrentHealth;
+    
 
    // public int numOfHearts;
 
@@ -21,13 +22,16 @@ public class PlayerHealthManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerCurrentHealth = PlayerMaxHealth;
+        playerCurrentHealth = PlayerPrefs.GetInt("PlayerHealth");
+        //playerCurrentHealth = PlayerMaxHealth;
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (playerCurrentHealth > PlayerMaxHealth)
         {
             playerCurrentHealth = PlayerMaxHealth;
@@ -42,7 +46,10 @@ public class PlayerHealthManager : MonoBehaviour
 
             
         }
+        PlayerPrefs.SetInt("PlayerHealth", playerCurrentHealth);
+        PlayerPrefs.Save();
         health.text = playerCurrentHealth.ToString();
+
     }
 
     public void HurtPlayer(int damageToGive)
