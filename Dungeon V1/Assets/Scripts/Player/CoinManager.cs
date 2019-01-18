@@ -7,7 +7,11 @@ public class CoinManager : MonoBehaviour
 {
     public Text score;
     public int scoreValue = 0;
-
+    int ScoreUpdate;
+     void Update()
+    {
+        SetScore();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Coin")
@@ -18,12 +22,13 @@ public class CoinManager : MonoBehaviour
             PlayerPrefs.SetInt("PlayerCoinAmount", scoreValue);
             // PlayerPrefs.DeleteKey("PlayerCoinAmount");
             PlayerPrefs.Save();
-            SetScore();
+            
         }
     }
-    void SetScore()
+   public void SetScore()
     {
-        score.text = scoreValue.ToString();
+       
+        score.text = PlayerPrefs.GetInt("PlayerCoinAmount").ToString();
     }
 
 
