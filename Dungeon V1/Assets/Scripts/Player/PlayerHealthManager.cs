@@ -46,6 +46,7 @@ public class PlayerHealthManager : MonoBehaviour
 
             
         }
+        //playerCurrentHealth = 5; resets health back
         PlayerPrefs.SetInt("PlayerHealth", playerCurrentHealth);
         PlayerPrefs.Save();
         health.text = playerCurrentHealth.ToString();
