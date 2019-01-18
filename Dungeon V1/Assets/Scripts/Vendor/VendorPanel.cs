@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vendor : CoinManager {
+public class VendorPanel : CoinManager {
     public  int PlayerCoins;
     public GameObject itemButton;
     private Inventory inventory;
