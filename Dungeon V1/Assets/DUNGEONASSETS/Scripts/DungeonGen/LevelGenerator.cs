@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
 
     [Header("Entities")]
     public GameObject player;
+    public GameObject Marker;
     public GameObject enemy;
     public GameObject chest;
     public GameObject door;
@@ -177,12 +178,30 @@ public class LevelGenerator : MonoBehaviour
     }
     void SpawnObjects()
     {
+
+       // 
+       
+        GameObject Player =Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
+        Debug.Log(Player.transform.position);
+        Marker.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, 0);
+      Debug.Log("Marker" + Marker.transform.position);
         
-        Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
-        GameObject TrapDoor = Instantiate(door, createdTiles[1], Quaternion.identity);
-        TrapDoor.transform.parent = TrapDoorGroup.transform;
         
-        for (int i = 0; i < PlayerPrefs.GetInt("saved_total"); i++)
+        
+       Marker.SetActive(true);
+
+        Destroy(Player);
+        for (int i = 0; i < 1; i++)
+        {
+
+
+            GameObject TrapDoor = Instantiate(door, createdTiles[1], Quaternion.identity);
+            TrapDoor.transform.parent = TrapDoorGroup.transform;
+        }
+        //door.transform.position = (createdTiles[0]);
+        // TrapDoor.transform.parent = TrapDoorGroup.transform;
+        //PlayerPrefs.GetInt("saved_total")
+        for (int i = 0; i <10 ; i++)
         {
             GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
             Enemies.transform.parent = EnemyGroup.transform;

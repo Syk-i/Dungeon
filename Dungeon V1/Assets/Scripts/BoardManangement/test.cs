@@ -16,7 +16,8 @@ public class test : MonoBehaviour {
     public void Awake()
     {
         total = PlayerPrefs.GetInt("saved_total");
-        total += one;
+       total += one;
+        //total = 0;
         PlayerPrefs.SetInt("saved_total", total); //set the new total value
         PlayerPrefs.Save();
         Debug.Log(total);

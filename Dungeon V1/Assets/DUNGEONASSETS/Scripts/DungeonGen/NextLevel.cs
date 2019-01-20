@@ -11,6 +11,7 @@ public class NextLevel : MonoBehaviour
     public GameObject EnemyGroup;
     public GameObject ChestGroup;
     public GameObject TrapDoorGroup;
+    
     public bool generate;
     public int enemi;
    
@@ -26,9 +27,14 @@ public class NextLevel : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
+   // void Update()
+   void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.tag == "Player")
+        {
+           // SceneManager.GetActiveScene(); SceneManager.LoadScene("Gucci");
+        }
+        /*
         if (generate == true)
         {
             foreach (Transform child in EnemyGroup.transform)
@@ -51,10 +57,10 @@ public class NextLevel : MonoBehaviour
             {
                 GameObject.Destroy(child.gameObject);
             }
-
+            */
             
             
-            SceneManager.GetActiveScene(); SceneManager.LoadScene("Gucci");
+           
             
             
            
@@ -67,23 +73,7 @@ public class NextLevel : MonoBehaviour
         }
         
     }
-    void Spawn()
-    {
-        if (generate == true)
-        {
-
-            for (int i = 0; i < gameObject.GetComponent<LevelGenerator>().tileAmount; i++)
-            {
-
-                StartCoroutine(gameObject.GetComponent<LevelGenerator>().GenerateLevel());
-
-
-
-            }
-
-        }
-    }
-}
+   
    
 
 

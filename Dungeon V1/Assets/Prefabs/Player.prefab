@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515699450633832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5021381, y: 8.651604, z: 0}
+  m_LocalPosition: {x: -224, y: 80, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 4829291608676180}
@@ -392,10 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMaxHealth: 5
   playerCurrentHealth: 5
-  numOfHearts: 5
-  hearts: []
-  fullHeart: {fileID: 0}
-  emptyHeart: {fileID: 0}
+  health: {fileID: 0}
 --- !u!114 &114276799720400300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 0}
+  scoreValue: 0
 --- !u!114 &114604995337472956
 MonoBehaviour:
   m_ObjectHideFlags: 1

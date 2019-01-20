@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4971980902678662}
   - component: {fileID: 212604070032093588}
   - component: {fileID: 61772612838815544}
+  - component: {fileID: 114874200555082486}
   m_Layer: 0
   m_Name: TrapDoor
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630131603786114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.813232, y: 45.368874, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,6 +67,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &114874200555082486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630131603786114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820d11b31ab62fc488aa5c1a94496148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileGroup: {fileID: 0}
+  WallGroup: {fileID: 0}
+  EnemyGroup: {fileID: 0}
+  ChestGroup: {fileID: 0}
+  TrapDoorGroup: {fileID: 0}
+  generate: 0
+  enemi: 0
 --- !u!212 &212604070032093588
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,7 +118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300106, guid: 9bc6f4724d4447648ab4d0eeb5fb6603, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
