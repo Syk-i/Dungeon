@@ -6,6 +6,7 @@ public class test : MonoBehaviour {
     public int total;
     public int one = 1;
     public int enem;
+    public int ShieldValue;
     // Use this for initialization
 
     private void Start()
@@ -21,6 +22,11 @@ public class test : MonoBehaviour {
         PlayerPrefs.SetInt("saved_total", total); //set the new total value
         PlayerPrefs.Save();
         Debug.Log(total);
+    }
+    public void Stats()
+    {
+      // ShieldValue= PlayerPrefs.GetInt("ShieldValue");
+       // PlayerPrefs.SetInt("ShieldValue", 0);
     }
 
     void Delete()

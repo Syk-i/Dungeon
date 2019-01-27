@@ -60,7 +60,11 @@ public class VendorPanel : CoinManager {
             Debug.Log(PlayerCoins);
             PlayerPrefs.SetInt("PlayerCoinAmount", PlayerCoins);
             PlayerPrefs.Save();
+            ShieldValue = PlayerPrefs.GetInt("ShieldValue");
             ShieldValue += 1;
+            PlayerPrefs.SetInt("ShieldValue", ShieldValue);
+            PlayerPrefs.Save();
+            Debug.Log("ShieldValue:" + ShieldValue);
             ShieldText.text = ShieldValue.ToString();
             
         }
