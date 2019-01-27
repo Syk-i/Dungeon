@@ -7,7 +7,7 @@ public class EnemyFollow : MonoBehaviour {
     private Transform target;
 	// Use this for initialization
 	void Start () {
-        target = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame

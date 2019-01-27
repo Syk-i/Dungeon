@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class VendorPanel : CoinManager {
     public  int PlayerCoins;
     public GameObject itemButton;
     private Inventory inventory;
+    public Text ShieldText;
+    public int ShieldValue;
      
 
     // Use this for initialization
@@ -44,6 +48,22 @@ public class VendorPanel : CoinManager {
             Debug.Log("Not enough money");
         }
         
+        
+    }
+    public void BuyShield()
+    {
+        if (PlayerPrefs.GetInt("PlayerCoinAmount") > 0)
+        {
+            Debug.Log("Pressed Vendor Button");
+            PlayerCoins = PlayerPrefs.GetInt("PlayerCoinAmount");
+            PlayerCoins = PlayerCoins - 3;
+            Debug.Log(PlayerCoins);
+            PlayerPrefs.SetInt("PlayerCoinAmount", PlayerCoins);
+            PlayerPrefs.Save();
+            ShieldValue += 1;
+            ShieldText.text = ShieldValue.ToString();
+            
+        }
         
     }
 }
