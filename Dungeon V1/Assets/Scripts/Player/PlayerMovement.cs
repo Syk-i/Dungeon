@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     }
     public PlayerState currentState;
     public float speed;
-    private Rigidbody2D myRigidbody;
+    public Rigidbody2D myRigidbody;
     private Vector3 change;
-    private Animator animator;
+    public Animator animator;
 
     //references
 
