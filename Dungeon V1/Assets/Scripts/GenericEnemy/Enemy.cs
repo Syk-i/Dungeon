@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public int baseattack;
     public float moveSpeed;
     public int damageToGive;
+    public GameObject coins;
    
     
 	// Use this for initialization
@@ -29,6 +30,11 @@ public class Enemy : MonoBehaviour {
             Debug.Log("Dead");
            
             gameObject.SetActive(false);
+            if(Random.Range(0,2)== 1)
+            {
+                Debug.Log("Coin");
+               GameObject coin=  Instantiate(coins, transform.position, Quaternion.identity);
+            }
         }
     }
     

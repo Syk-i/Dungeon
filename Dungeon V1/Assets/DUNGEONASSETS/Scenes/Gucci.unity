@@ -2761,6 +2761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseMenu: {fileID: 1225539252}
+  player: {fileID: 1145101385}
+  Enemy: {fileID: 1106607072739004, guid: 4ba3d03cc06772c45b8ab39965fdea9c, type: 2}
 --- !u!224 &1911981009
 RectTransform:
   m_ObjectHideFlags: 0

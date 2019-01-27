@@ -49,7 +49,7 @@ public class DemonEnemy : Enemy {
     public void EnemyPause()
     {
         Debug.Log("Yellow");
-        enemyRigidbody.isKinematic = false;
+        
         enemyRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         transform.position = Vector3.zero;
     }

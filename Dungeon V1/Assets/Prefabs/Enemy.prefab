@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106607072739004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.37269, y: 9.435943, z: 2.0664062}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -134,10 +134,12 @@ MonoBehaviour:
   baseattack: 0
   moveSpeed: 10
   damageToGive: 1
+  coins: {fileID: 1462948112356846, guid: aec096e5ba2c338438edd8a30655c8b7, type: 2}
   target: {fileID: 0}
   chaseRadius: 25
   attackRadius: 4
   homePosition: {fileID: 0}
+  enemyRigidbody: {fileID: 0}
 --- !u!212 &212432683911315814
 SpriteRenderer:
   m_ObjectHideFlags: 1
