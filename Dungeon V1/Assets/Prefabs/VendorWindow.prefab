@@ -265,6 +265,8 @@ MonoBehaviour:
   scoreValue: 0
   PlayerCoins: 1
   itemButton: {fileID: 1520903880490968, guid: 0bb54eaa834c5a64bbe38ac6a753c117, type: 2}
+  ShieldText: {fileID: 0}
+  ShieldValue: 0
 --- !u!222 &222540930148529708
 CanvasRenderer:
   m_ObjectHideFlags: 1

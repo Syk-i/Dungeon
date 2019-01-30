@@ -11,8 +11,10 @@ public class LevelGenerator : MonoBehaviour
     public GameObject enemy;
     public GameObject chest;
     public GameObject door;
+    public GameObject ItemVendor;
+    public GameObject ItemVendorMarker;
     public int chestAmount = 1;
-    public int enemyAmount =10;
+    public int enemyAmount=10;
 
     [Header("UI")]
     private GameObject UIVanish;
@@ -69,7 +71,8 @@ public class LevelGenerator : MonoBehaviour
         StartCoroutine(GenerateLevel());
         //Random.seed = 10;// if you want to generate the same level again
         UIVanish = gameObject.GetComponent<Canvasui>().uidrop;
-        int EnemAmount = gameObject.GetComponent<test>().total;
+        //int EnemAmount = gameObject.GetComponent<test>().RoomNumber;
+       // Debug.Log(EnemAmount);
 
     }
 
@@ -195,13 +198,26 @@ public class LevelGenerator : MonoBehaviour
         {
 
 
-            GameObject TrapDoor = Instantiate(door, createdTiles[1], Quaternion.identity);
+            GameObject TrapDoor = Instantiate(door, createdTiles[0], Quaternion.identity);
             TrapDoor.transform.parent = TrapDoorGroup.transform;
+        }
+        for (int i = 0; i < 1; i++)
+        {
+
+
+            
+            GameObject vendor = Instantiate(ItemVendorMarker, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+            Debug.Log(vendor.transform.position);
+            ItemVendor.transform.position = new Vector3(vendor.transform.position.x, vendor.transform.position.y, 0);
+            Debug.Log("ItemVendor Marker" + ItemVendor.transform.position);
+            ItemVendor.SetActive(true);
+            Destroy(vendor);
+
         }
         //door.transform.position = (createdTiles[0]);
         // TrapDoor.transform.parent = TrapDoorGroup.transform;
         //PlayerPrefs.GetInt("saved_total")
-        for (int i = 0; i <10 ; i++)
+        for (int i = 0; i <enemyAmount ; i++)
         {
             GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
             Enemies.transform.parent = EnemyGroup.transform;

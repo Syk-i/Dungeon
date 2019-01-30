@@ -2,26 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour {
-    public int total;
+public class test : LevelGenerator {
+    public int RoomNumber;
     public int one = 1;
-    public int enem;
+    public int EnemyHealth;
     public int ShieldValue;
     // Use this for initialization
 
     private void Start()
     {
         //Delete();
+        EnemyHealth = gameObject.GetComponent<Enemy>().health;
     }
 
     public void Awake()
     {
-        total = PlayerPrefs.GetInt("saved_total");
-       total += one;
-        //total = 0;
-        PlayerPrefs.SetInt("saved_total", total); //set the new total value
+        RoomNumber = PlayerPrefs.GetInt("CurrentDungeon");
+       RoomNumber += 1;
+       // RoomNumber = 0;
+        PlayerPrefs.SetInt("CurrentDungeon", RoomNumber); //set the new total value
         PlayerPrefs.Save();
-        Debug.Log(total);
+
+        
+        Debug.Log(RoomNumber);
+        
+        EnemyHealth += 1;
+        Debug.Log(EnemyHealth);
+        
     }
     public void Stats()
     {

@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour {
             pauseMenu.SetActive(true);
             player.GetComponent<PlayerMovement>().myRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             player.GetComponent<PlayerMovement>().animator.enabled = false;
-            Enemy.GetComponent<DemonEnemy>().EnemyPause() ;
+            Enemy.GetComponent<DemonEnemy>().EnemyPause();
         }
         else
         {

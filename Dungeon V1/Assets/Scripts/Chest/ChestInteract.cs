@@ -16,7 +16,7 @@ public class ChestInteract : CoinManager
     {
         if (other.CompareTag("Player"))
         {
-            scoreValue = PlayerPrefs.GetInt("PlayerAmount");
+            scoreValue = PlayerPrefs.GetInt("PlayerCoinAmount");
             scoreValue += 2;
             GameObject.Destroy(Chest);
             PlayerPrefs.SetInt("PlayerCoinAmount", scoreValue);

@@ -28,7 +28,7 @@ public class VendorPanel : CoinManager {
             Debug.Log(PlayerCoins);
             PlayerPrefs.SetInt("PlayerCoinAmount", PlayerCoins);
             PlayerPrefs.Save();
-           // SetScore();
+           
             for (int i = 0; i < inventory.slots.Length; i++)
             {
                 if (inventory.isFull[i] == false)
@@ -40,6 +40,7 @@ public class VendorPanel : CoinManager {
                     break;
                 }
             }
+            SetScore();
 
 
         }
