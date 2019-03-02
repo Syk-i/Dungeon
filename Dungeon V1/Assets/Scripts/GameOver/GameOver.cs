@@ -17,5 +17,9 @@ public class GameOver : MonoBehaviour {
         {
             GameOverScreenOverlay.SetActive(true);
         }
+        else
+        {
+            GameOverScreenOverlay.SetActive(false);
+        }
 	}
 }

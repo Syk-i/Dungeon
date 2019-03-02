@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
-    public bool isPaused;
-    public GameObject pauseMenu;
-    public GameObject player;
-    public GameObject Enemy;
+    public GameObject PauseUI;
 
-     void Update()
-    {
-        if (isPaused)
+    private bool paused = false;
+
+	// Use this for initialization
+	void Start () {
+        PauseUI.SetActive(false);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (Input.GetButtonDown("Pause"))
         {
-            pauseMenu.SetActive(true);
-            player.GetComponent<PlayerMovement>().myRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            player.GetComponent<PlayerMovement>().animator.enabled = false;
-            Enemy.GetComponent<DemonEnemy>().EnemyPause();
+            paused = !paused;
         }
-        else
+        if (paused)
         {
-            pauseMenu.SetActive(false);
+            PauseUI.SetActive(true);
+            Time.timeScale = 0;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!paused)
         {
-            isPaused = !isPaused;
-            player.GetComponent<PlayerMovement>().animator.enabled = true;
-            player.GetComponent<PlayerMovement>().myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-
+            PauseUI.SetActive(false);
+            Time.timeScale = 1;
         }
-    }
-
-    // Update is called once per frame
-    public void Resume()
-    {
-        isPaused = false;
-        player.GetComponent<PlayerMovement>().animator.enabled = true;
-        player.GetComponent<PlayerMovement>().myRigidbody.constraints = RigidbodyConstraints2D.None;
-        player.GetComponent<PlayerMovement>().myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-    }
+		
+	}
 }

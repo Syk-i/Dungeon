@@ -24,7 +24,7 @@ public class HurtPlayer : MonoBehaviour {
             
             rb = other.gameObject.GetComponent<Rigidbody2D>();
             Vector2 difference = rb.transform.position - transform.position;
-            difference = difference.normalized * 25;
+            difference = difference.normalized * 50;
                 
             rb.AddForce(difference, ForceMode2D.Impulse);
             Debug.Log("Hurt");
@@ -46,6 +46,8 @@ public class HurtPlayer : MonoBehaviour {
     {
         yield return new WaitForSeconds(1);
         rb.velocity = Vector2.zero;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0f;
         Debug.Log("KineMatic");
     }
    

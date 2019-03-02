@@ -24,8 +24,10 @@ public class VendorPanel : CoinManager {
         if (PlayerPrefs.GetInt("PlayerCoinAmount") > 0){
             Debug.Log("Pressed Vendor Button");
             PlayerCoins = PlayerPrefs.GetInt("PlayerCoinAmount");
+            
             PlayerCoins = PlayerCoins - 1;
             Debug.Log(PlayerCoins);
+            
             PlayerPrefs.SetInt("PlayerCoinAmount", PlayerCoins);
             PlayerPrefs.Save();
            
@@ -53,7 +55,7 @@ public class VendorPanel : CoinManager {
     }
     public void BuyShield()
     {
-        if (PlayerPrefs.GetInt("PlayerCoinAmount") > 0)
+        if (PlayerPrefs.GetInt("PlayerCoinAmount") > 2)
         {
             Debug.Log("Pressed Vendor Button");
             PlayerCoins = PlayerPrefs.GetInt("PlayerCoinAmount");
@@ -69,6 +71,10 @@ public class VendorPanel : CoinManager {
             ShieldText.text = ShieldValue.ToString();
             
         }
-        
+        else
+        {
+            Debug.Log("Not enough money");
+        }
+
     }
 }

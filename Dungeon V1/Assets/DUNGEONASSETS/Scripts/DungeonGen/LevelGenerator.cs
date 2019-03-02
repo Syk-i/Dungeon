@@ -6,8 +6,8 @@ public class LevelGenerator : MonoBehaviour
 {
 
     [Header("Entities")]
-    public GameObject player;
     public GameObject Marker;
+    public GameObject player;
     public GameObject enemy;
     public GameObject chest;
     public GameObject door;
@@ -170,6 +170,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Finish()
     {
+        Debug.Log("All Floor Tiles are Spawned");
         CreateWallValues();
         CreateWalls();
         SpawnObjects();
@@ -182,12 +183,12 @@ public class LevelGenerator : MonoBehaviour
     void SpawnObjects()
     {
 
-       // 
+        Debug.Log("SpawnObject Function running");
        
         GameObject Player =Instantiate(player, createdTiles[createdTiles.Count - 1], Quaternion.identity);
-        Debug.Log(Player.transform.position);
+        Debug.Log("Player Position: "+ Player.transform.position);
         Marker.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, 0);
-      Debug.Log("Marker" + Marker.transform.position);
+      Debug.Log("Marker:  " + Marker.transform.position);
         
         
         
@@ -207,9 +208,9 @@ public class LevelGenerator : MonoBehaviour
 
             
             GameObject vendor = Instantiate(ItemVendorMarker, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
-            Debug.Log(vendor.transform.position);
+            Debug.Log("ItemVendor Position"+ vendor.transform.position);
             ItemVendor.transform.position = new Vector3(vendor.transform.position.x, vendor.transform.position.y, 0);
-            Debug.Log("ItemVendor Marker" + ItemVendor.transform.position);
+            Debug.Log("ItemVendor Marker: " + ItemVendor.transform.position);
             ItemVendor.SetActive(true);
             Destroy(vendor);
 
@@ -220,12 +221,16 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i <enemyAmount ; i++)
         {
             GameObject Enemies= Instantiate(enemy, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+            //Spawns enemy at a random position within the dungeon
             Enemies.transform.parent = EnemyGroup.transform;
+            //Places all enemy objects within an Enemy folder 
         }
         for (int i = 0; i < chestAmount; i++)
         {
            GameObject Chest = Instantiate(chest, createdTiles[Random.Range(0, createdTiles.Count)], Quaternion.identity);
+            //Spawns chest at a random position within the dungeon 
             Chest.transform.parent = ChestGroup.transform;
+            //Places all chest objects within a Chest folder
         }
     }
 

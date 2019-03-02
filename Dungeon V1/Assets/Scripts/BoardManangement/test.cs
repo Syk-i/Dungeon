@@ -24,10 +24,10 @@ public class test : LevelGenerator {
         PlayerPrefs.Save();
 
         
-        Debug.Log(RoomNumber);
+        Debug.Log("RoomNumber "+RoomNumber);
         
         EnemyHealth += 1;
-        Debug.Log(EnemyHealth);
+        Debug.Log("EnemyHealth: " + EnemyHealth);
         
     }
     public void Stats()

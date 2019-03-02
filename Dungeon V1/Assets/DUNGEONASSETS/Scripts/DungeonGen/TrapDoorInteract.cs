@@ -9,6 +9,7 @@ public class TrapDoorInteract : NextLevel {
     {
         if(other.tag == "Player")
         {
+            Debug.Log("Next Level");
             SceneManager.GetActiveScene(); SceneManager.LoadScene("Gucci");
         }
     }
