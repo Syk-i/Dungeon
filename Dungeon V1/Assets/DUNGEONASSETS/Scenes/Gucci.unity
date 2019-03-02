@@ -1944,7 +1944,7 @@ Prefab:
     - target: {fileID: 114604995337472956, guid: eb4a1d2c2a94531499752ee7ab06e968,
         type: 2}
       propertyPath: isFull.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4898133383649056, guid: eb4a1d2c2a94531499752ee7ab06e968, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2006,17 +2006,17 @@ Prefab:
         type: 2}
       propertyPath: slots.Array.data[1]
       value: 
-      objectReference: {fileID: 50239588}
+      objectReference: {fileID: 1684734742}
     - target: {fileID: 114604995337472956, guid: eb4a1d2c2a94531499752ee7ab06e968,
         type: 2}
       propertyPath: slots.Array.data[2]
       value: 
-      objectReference: {fileID: 50239588}
+      objectReference: {fileID: 1676493827}
     - target: {fileID: 114604995337472956, guid: eb4a1d2c2a94531499752ee7ab06e968,
         type: 2}
       propertyPath: slots.Array.data[3]
       value: 
-      objectReference: {fileID: 50239588}
+      objectReference: {fileID: 1695881000}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb4a1d2c2a94531499752ee7ab06e968, type: 2}
   m_IsPrefabParent: 0
@@ -2547,7 +2547,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1427707417}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -2605,6 +2605,7 @@ GameObject:
   - component: {fileID: 1427707413}
   - component: {fileID: 1427707412}
   - component: {fileID: 1427707416}
+  - component: {fileID: 1427707417}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2689,6 +2690,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4898133383649056, guid: eb4a1d2c2a94531499752ee7ab06e968, type: 2}
   smoothing: 2
+--- !u!114 &1427707417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427707411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3370f621a99c63479a152b064f95623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseUI: {fileID: 1911981007}
 --- !u!1 &1473179104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,6 +2839,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1610291040}
+--- !u!1 &1676493827 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1114163848631182, guid: 26f58273bd329cc439c8095e2686a5bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 79360303}
+--- !u!1 &1684734742 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1566400716501320, guid: 26f58273bd329cc439c8095e2686a5bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 79360303}
+--- !u!1 &1695881000 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1496266286133112, guid: 26f58273bd329cc439c8095e2686a5bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 79360303}
 --- !u!1 &1720874296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,18 +3148,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1146916266268050, guid: 63c98319b8cc5e1429b269c87fd54ce0,
     type: 2}
   m_PrefabInternal: {fileID: 1378059202}
---- !u!114 &1796691507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1796691506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3370f621a99c63479a152b064f95623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseUI: {fileID: 1911981007}
 --- !u!1 &1810139932
 GameObject:
   m_ObjectHideFlags: 0
