@@ -11,9 +11,9 @@ public class PauseMenu : MonoBehaviour {
 	void Start () {
         PauseUI.SetActive(false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (Input.GetButtonDown("Pause"))
         {
             paused = !paused;
@@ -28,6 +28,12 @@ public class PauseMenu : MonoBehaviour {
             PauseUI.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+    public void Resume()
+    {
+        paused = false;
+        
+    }
 		
 	}
-}
+
